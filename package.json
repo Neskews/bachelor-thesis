@@ -1,18 +1,16 @@
 {
-  "name": "strah-arbeit",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon --exec python -m http.server 3000"
-  },
-  "author": "Lukas Höpfner",
-  "license": "ISC",
-  "dependencies": {
-    "jquery": "^3.3.1"
-  },
-  "devDependencies": {
-    "eslint": "^5.5.0",
-    "nodemon": "^1.18.4"
-  }
+	"name": "strah-arbeit",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {},
+	"author": "Lukas Höpfner",
+	"license": "ISC",
+	"dependencies": {
+		"express": "^4.16.3"
+	},
+	"devDependencies": {
+		"webpack": "^4.19.0",
+		"webpack-cli": "^3.1.0"
+	}
 }

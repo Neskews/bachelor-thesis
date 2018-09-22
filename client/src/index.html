@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Client</title>
+    <link rel="stylesheet" href="./master.css">
+  </head>
+  <body>
+
+    <div id='transition'>
+      <div class="card" id="ecma"></div>
+      <div class="card" id="jquery"></div>
+    </div>
+
+
+    <div id="getJson">
+      <div id="ecma-request">
+        <button id='ecmaButton' class="btn">ECMA getJSON</button>
+        <div id="ecma-response"></div>
+      </div>
+
+      <div id="jquery-request">
+        <button id="jQueryButton" class="btn">jQuery getJSON</button>
+        <div id="jquery-response"></div>
+      </div>
+
+      <div id="other"></div>
+    </div>
+
+
+    <div id='request'>
+      <div>
+        <button id='ajax-jq-button'>jQuery ajax</button>
+        <div id="jq-html-response"></div>
+      </div>
+      <div>
+        <button id='ajax-ecma-button'>ECMA ajax</button>
+        <div id='ecma-html-response'></div>
+      </div>
+    </div>
+
+
+
+    <script src="./jquery.js"></script>
+    <script src="./transition/ecma.js"></script>
+    <script src="./transition/jq.js"></script>
+    <script src="./getJson/ecma.js"></script>
+    <script src="./getJson/jq.js"></script>
+    <script src="./request/jq.js"></script>
+    <script src="./request/ecma.js"></script>
+
+  </body>
+</html>

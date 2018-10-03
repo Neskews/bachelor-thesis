@@ -1,4 +1,4 @@
-const ecmaCard = document.getElementById('ecma');
+const ecmaCard = document.getElementById('animations-ecma');
 
 ecmaCard.style.transitionDuration = '.5s';
 

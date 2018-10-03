@@ -1,4 +1,4 @@
-$('#jquery')
+$('#animations-jq')
 	.on('mouseenter', function() {
 		$(this).animate({ height: '350px' }, 500);
 	})

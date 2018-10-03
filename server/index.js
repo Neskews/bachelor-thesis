@@ -5,7 +5,7 @@ const port = 3000;
 app.get('/', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 	setTimeout(function() {
-		response.send('<p>some html</p>');
+		response.send('<p>my html</p>');
 	}, 50);
 });
 

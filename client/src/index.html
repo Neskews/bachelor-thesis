@@ -7,45 +7,77 @@
   </head>
   <body>
 
-    <div id='transition'>
-      <div class="card" id="ecma"></div>
-      <div class="card" id="jquery"></div>
+    <!-- Animations -->
+    <h1>Animations</h1>
+    <div class="frame custom">
+      <div class="card" id="animations-jq"></div>
+      <div class="card" id="animations-ecma"></div>
     </div>
 
-
-    <div id="getJson">
-      <div id="ecma-request">
-        <button id='ecmaButton' class="btn">ECMA getJSON</button>
-        <div id="ecma-response"></div>
-      </div>
-
-      <div id="jquery-request">
-        <button id="jQueryButton" class="btn">jQuery getJSON</button>
-        <div id="jquery-response"></div>
-      </div>
-
-      <div id="other"></div>
-    </div>
-
-
-    <div id='request'>
+    <!-- Ajax -->
+    <h1>Ajax</h1>
+    <!-- Ajax standard -->
+    <h3>Standard</h3>
+    <div class="frame">
       <div>
-        <button id='ajax-jq-button'>jQuery ajax</button>
-        <div id="jq-html-response"></div>
+        <button id='ajax-standard-jq-button'>Ajax standard jquery</button>
+        <div id="ajax-standard-jq-response"></div>
       </div>
       <div>
-        <button id='ajax-ecma-button'>ECMA ajax</button>
-        <div id='ecma-html-response'></div>
+        <button id='ajax-standard-ecma-button'>Ajax standrad ecma</button>
+        <div id='ajax-standard-ecma-response'></div>
       </div>
     </div>
 
-    <script src="./jquery.js"></script>
-    <script src="./transition/ecma.js"></script>
-    <script src="./transition/jq.js"></script>
-    <script src="./getJson/ecma.js"></script>
-    <script src="./getJson/jq.js"></script>
-    <script src="./request/jq.js"></script>
-    <script src="./request/ecma.js"></script>
+    <!-- Ajax custom header-->
+    <h3>Custom header</h3>
+    <div class="frame">
+      <div>
+        <button id="ajax-customHeader-jq-button">Ajax custom header jquery</button>
+        <div id='ajax-customHeader-jq-response'></div>
+      </div>
+      <div>
+        <button id="ajax-customHeader-ecma-button">Ajax custom header ecma</button>
+        <div id="ajax-customHeader-ecma-response"></div>
+      </div>
+    </div>
+
+    <!-- Ajax get json -->
+    <h3>Get json</h3>
+    <div class="frame">
+      <div>
+        <button id="ajax-getJson-jq-button">Ajax get json jquery</button>
+        <div id="ajax-getJson-jq-response"></div>
+      </div>
+
+      <div>
+        <button id="ajax-getJson-ecma-button">Ajax get json ecma</button>
+        <div id="ajax-getJson-ecma-response"></div>
+      </div>
+    </div>  
+    
+    <!-- load javascripts -->
+    <!-- load jquery -->
+    <script src="jquery.js"></script>
+    
+    <!-- load request object for ecma scripts -->
+    <script src="ajax/registerRequestObject.js"></script>
+
+    <!-- load animation scripts -->
+    <script src="animation/jq.js"></script>
+    <script src="animation/ecma.js"></script>
+
+    <!-- load standard ajax request scripts -->
+    <script src="ajax/standard/jq.js"></script>
+    <script src="ajax/standard/ecma.js"></script>
+
+    <!-- load get json scripts -->
+    <script src="ajax/getJson/jq.js"></script>
+    <script src="ajax/getJson/ecma.js"></script>
+
+    <!-- load custom header scripts -->
+    <script src="ajax/customHeader/jq.js"></script>
+    <script src="ajax/customHeader/ecma.js"></script>
 
   </body>
 </html>

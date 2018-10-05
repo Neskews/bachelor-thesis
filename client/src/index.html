@@ -1,83 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Client</title>
-    <link rel="stylesheet" href="./master.css">
-  </head>
-  <body>
 
-    <!-- Animations -->
-    <h1>Animations</h1>
-    <div class="frame custom">
-      <div class="card" id="animations-jq"></div>
-      <div class="card" id="animations-ecma"></div>
+<head>
+  <meta charset="utf-8">
+  <title>Client</title>
+  <link rel="stylesheet" href="./master.css">
+</head>
+
+<body>
+
+  <!-- Animations -->
+  <h1>Animations</h1>
+  <div class="frame custom">
+    <div class="card" id="animations-jq"></div>
+    <div class="card" id="animations-ecma"></div>
+  </div>
+
+  <!-- Ajax -->
+  <h1>Ajax</h1>
+  <!-- Ajax standard -->
+  <h3>Standard</h3>
+  <div class="frame">
+    <div>
+      <button id='ajax-standard-jq-button'>Ajax standard jquery</button>
+      <div id="ajax-standard-jq-response"></div>
+    </div>
+    <div>
+      <button id='ajax-standard-ecma-button'>Ajax standrad ecma</button>
+      <div id='ajax-standard-ecma-response'></div>
+    </div>
+  </div>
+
+  <!-- Ajax custom header-->
+  <h3>Custom header</h3>
+  <div class="frame">
+    <div>
+      <button id="ajax-customHeader-jq-button">Ajax custom header jquery</button>
+      <div id='ajax-customHeader-jq-response'></div>
+    </div>
+    <div>
+      <button id="ajax-customHeader-ecma-button">Ajax custom header ecma</button>
+      <div id="ajax-customHeader-ecma-response"></div>
+    </div>
+  </div>
+
+  <!-- Ajax post data -->
+  <h3>Post Data</h3>
+  <div class="frame">
+    <div>
+      <button id="ajax-post-jq-button">Ajax post data jquery</button>
+      <div id="ajax-post-jq-response"></div>
+    </div>
+    <div>
+      <button id="ajax-post-ecma-button">Ajax post data ecma</button>
+      <div id="ajax-post-ecma-response"></div>
+    </div>
+  </div>
+
+  <!-- Ajax get json -->
+  <h3>Get json</h3>
+  <div class="frame">
+    <div>
+      <button id="ajax-getJson-jq-button">Ajax get json jquery</button>
+      <div id="ajax-getJson-jq-response"></div>
     </div>
 
-    <!-- Ajax -->
-    <h1>Ajax</h1>
-    <!-- Ajax standard -->
-    <h3>Standard</h3>
-    <div class="frame">
-      <div>
-        <button id='ajax-standard-jq-button'>Ajax standard jquery</button>
-        <div id="ajax-standard-jq-response"></div>
-      </div>
-      <div>
-        <button id='ajax-standard-ecma-button'>Ajax standrad ecma</button>
-        <div id='ajax-standard-ecma-response'></div>
-      </div>
+    <div>
+      <button id="ajax-getJson-ecma-button">Ajax get json ecma</button>
+      <div id="ajax-getJson-ecma-response"></div>
     </div>
+  </div>
 
-    <!-- Ajax custom header-->
-    <h3>Custom header</h3>
-    <div class="frame">
-      <div>
-        <button id="ajax-customHeader-jq-button">Ajax custom header jquery</button>
-        <div id='ajax-customHeader-jq-response'></div>
-      </div>
-      <div>
-        <button id="ajax-customHeader-ecma-button">Ajax custom header ecma</button>
-        <div id="ajax-customHeader-ecma-response"></div>
-      </div>
-    </div>
+  <!-- load javascripts -->
+  <!-- load jquery -->
+  <script src="jquery.js"></script>
 
-    <!-- Ajax get json -->
-    <h3>Get json</h3>
-    <div class="frame">
-      <div>
-        <button id="ajax-getJson-jq-button">Ajax get json jquery</button>
-        <div id="ajax-getJson-jq-response"></div>
-      </div>
+  <!-- load request object for ecma scripts -->
+  <script src="ajax/registerRequestObject.js"></script>
 
-      <div>
-        <button id="ajax-getJson-ecma-button">Ajax get json ecma</button>
-        <div id="ajax-getJson-ecma-response"></div>
-      </div>
-    </div>  
-    
-    <!-- load javascripts -->
-    <!-- load jquery -->
-    <script src="jquery.js"></script>
-    
-    <!-- load request object for ecma scripts -->
-    <script src="ajax/registerRequestObject.js"></script>
+  <!-- load animation scripts -->
+  <script src="animation/jq.js"></script>
+  <script src="animation/ecma.js"></script>
 
-    <!-- load animation scripts -->
-    <script src="animation/jq.js"></script>
-    <script src="animation/ecma.js"></script>
+  <!-- load standard ajax request scripts -->
+  <script src="ajax/standard/jq.js"></script>
+  <script src="ajax/standard/ecma.js"></script>
 
-    <!-- load standard ajax request scripts -->
-    <script src="ajax/standard/jq.js"></script>
-    <script src="ajax/standard/ecma.js"></script>
+  <!-- load custom header scripts -->
+  <script src="ajax/customHeader/jq.js"></script>
+  <script src="ajax/customHeader/ecma.js"></script>
 
-    <!-- load get json scripts -->
-    <script src="ajax/getJson/jq.js"></script>
-    <script src="ajax/getJson/ecma.js"></script>
+  <!-- load post data scripts  -->
+  <script src="ajax/data/jq.js"></script>
+  <script src="ajax/data/ecma.js"></script>
 
-    <!-- load custom header scripts -->
-    <script src="ajax/customHeader/jq.js"></script>
-    <script src="ajax/customHeader/ecma.js"></script>
+  <!-- load get json scripts -->
+  <script src="ajax/getJson/jq.js"></script>
+  <script src="ajax/getJson/ecma.js"></script>
 
-  </body>
+
+
+</body>
+
 </html>

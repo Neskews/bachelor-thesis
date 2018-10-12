@@ -3,10 +3,9 @@ const selectorHeaderButtonSizzle = Sizzle(
 )[0];
 
 selectorHeaderButtonSizzle.addEventListener('click', () => {
-	const selectorHeaderResultSizzle = Sizzle(
-		'#selector-headlines-sizzle-result'
-	)[0];
+	const selectorHeaderResultSizzle = Sizzle(':header');
 
-	const selectorHeaderResultSizzleLength = Sizzle(':header').length;
-	selectorHeaderResultSizzle.innerHTML = `${selectorHeaderResultSizzleLength} matches`;
+	Sizzle('#selector-headlines-sizzle-result')[0].innerHTML = `${
+		selectorHeaderResultSizzle.length
+	} matches`;
 });

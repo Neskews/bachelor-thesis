@@ -1,0 +1,9 @@
+#animations-css {
+  left: 480px;
+  background-color: blue;
+}
+
+#animations-css:hover {
+  height: 350px;
+  transition: 0.5s;
+}

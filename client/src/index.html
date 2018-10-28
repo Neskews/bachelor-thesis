@@ -16,7 +16,11 @@
     <div class="card" id="animations-jq"></div>
     <div class="card" id="animations-ecma"></div>
     <div class="card" id="animations-css"></div>
+    <div class="card" id="animations-api"></div>
   </div>
+
+  <!-- global loading spinner -->
+  <div id="isLoading">LOADING ...</div>
 
   <!-- Ajax -->
   <h1>Ajax</h1>
@@ -66,10 +70,21 @@
       <button id="ajax-getJson-jq-button">Ajax get json jquery</button>
       <div id="ajax-getJson-jq-response"></div>
     </div>
-
     <div>
       <button id="ajax-getJson-ecma-button">Ajax get json ecma</button>
       <div id="ajax-getJson-ecma-response"></div>
+    </div>
+  </div>
+
+  <h3>Status Code</h3>
+  <div class="frame">
+    <div>
+      <button id="ajax-statusCode-jq-button">Ajax status code jq</button>
+      <div id="ajax-statusCode-jq-response"></div>
+    </div>
+    <div>
+      <button id="ajax-statusCode-ecma-button">Ajax status code ecma</button>
+      <div id="ajax-statusCode-ecma-response"></div>
     </div>
   </div>
 
@@ -111,17 +126,25 @@
   <!-- load request object for ecma scripts -->
   <script src="ajax/registerRequestObject.js"></script>
 
+  <!-- animations -->
   <!-- load animation scripts -->
   <script src="animation/jq.js"></script>
   <script src="animation/ecma.js"></script>
+
+  <!-- load global loading spinner scripts -->
+  <script src="ajax/global/jq.js"></script>
+  <script src="ajax/global/ecma.js"></script>
+
+  <!-- load animations api script -->
+  <script src="animation/animationsApi/ecma.js"></script>
 
   <!-- load standard ajax request scripts -->
   <script src="ajax/standard/jq.js"></script>
   <script src="ajax/standard/ecma.js"></script>
 
+  <!-- request -->
   <!-- load custom header scripts -->
   <script src="ajax/customHeader/jq.js"></script>
-  <script src="ajax/customHeader/ecma.js"></script>
 
   <!-- load post data scripts  -->
   <script src="ajax/data/jq.js"></script>
@@ -131,6 +154,11 @@
   <script src="ajax/getJson/jq.js"></script>
   <script src="ajax/getJson/ecma.js"></script>
 
+  <!-- load statusCode scripts -->
+  <script src="ajax/statusCode/ecma.js"></script>
+  <script src="ajax/statusCode/jq.js"></script>
+
+  <!-- selectors -->
   <!-- load header selector scripts -->
   <script src="selector/header/sizzle.js"></script>
   <script src="selector/header/ecma.js"></script>

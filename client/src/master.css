@@ -24,6 +24,15 @@
   background-color: red;
 }
 
+#isLoading {
+  visibility: hidden;
+}
+
+#animations-api {
+  left: 790px;
+  background-color: brown;
+}
+
 .card {
   top: 10px;
   width: 250px;

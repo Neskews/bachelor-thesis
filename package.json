@@ -1,8 +1,8 @@
 {
 	"name": "strah-arbeit",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"description": "Bachelor thesis",
+	"main": "server/",
 	"scripts": {},
 	"author": "Lukas Höpfner",
 	"license": "ISC",
@@ -11,7 +11,9 @@
 		"express-formidable": "^1.0.0"
 	},
 	"devDependencies": {
+		"eslint": "^5.7.0",
 		"webpack": "^4.19.0",
 		"webpack-cli": "^3.1.0"
-	}
+	},
+	"repository": "https://github.com/Neskews/bachelor-thesis.git"
 }

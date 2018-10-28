@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../src/jquery.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const U = 'http://localhost:3000/global'
+      const S = (data, status, jqXHR) => { 
+        const HTMLElement = document.createElement('DIV');
+        HTMLElement.innerHTML = `<h4>${data.currentTarget ? '[ECMA]' : '[jQuery]'} finished loading</h4>`;
+        document.querySelector('.responses').appendChild(HTMLElement);
+      }
+
+      $(document).ajaxStart(() => $('.loader').html('<h4>[jQuery] loading ...</h4>'));
+      $(document).ajaxStop(() => $('.loader').html(''))
+
+      function requestEcma() {
+        const X = new XMLHttpRequest();
+        X.open('GET', U);
+        X.onload = S;
+        X.send();
+      }
+
+      function requestJq() {
+        $.ajax(U).then(S);
+      }
+    </script>
+
+    <button onclick="requestJq()">request jquery</button>
+    <button onclick="requestEcma()">request ecma</button>
+
+    <div class="loader"></div>
+    <script>
+      // const open = window.XMLHttpRequest.prototype.open;
+      // const send = window.XMLHttpRequest.prototype.send;
+      //
+      // const LOADING_ELEMENT = document.querySelector('.loader');
+      //
+      // function openReplacement(method, url, async, user, password) {
+      //   this._url = url;
+      //   return open.apply(this, arguments);
+      // }
+      //
+      // function sendReplacement(data) {
+      //   if (this.onreadystatechange) {
+      //     this._onreadystatechange = this.onreadystatechange;
+      //   }
+      //
+      //   LOADING_ELEMENT.innerHTML = '<h4>[ECMA] loading ...</h4>'
+      //
+      //   this.onreadystatechange = onReadyStateChangeReplacement;
+      //   return send.apply(this, arguments);
+      // }
+      //
+      // function onReadyStateChangeReplacement() {
+      //   LOADING_ELEMENT.innerHTML = '';
+      //
+      //   if (this._onreadystatechange) {
+      //     return this._onreadystatechange.apply(this, arguments);
+      //   }
+      // }
+      //
+      // window.XMLHttpRequest.prototype.open = openReplacement;
+      // window.XMLHttpRequest.prototype.send = sendReplacement;
+    </script>
+
+    <div class="responses"></div>
+
+  </body>
+</html>

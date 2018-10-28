@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .animate {
+        width: 100px;
+        height: 25px;
+        background-color: blue;
+        margin-top: 5px;
+        transition: 500ms;
+      }
+    </style>
+    <script src="../../../src/jquery.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      const S = '.animate';
+      const P = [
+        {width: '100px'},
+        {width: '100%'}
+      ];
+
+      const Q = {width: '100%'};
+      const R = {width: '100px'};
+
+      const DU = 500;
+      const DE = 200;
+
+      function runAnimationsApi() {
+        document.querySelector(S).animate(P, {
+          duration: DU,
+          delay: DE,
+        });
+      }
+
+      function runJqueryAnimate() {
+        $(S).delay(DE).animate(Q);
+      }
+
+      function reverseJquery() {
+        document.querySelector(S).animate(R, {
+          duration: DU,
+          fill: 'backwards'
+        });
+      }
+
+      function reset() {
+        window.location.reload();
+      }
+    </script>
+    <button type="button" name="button" onclick="runAnimationsApi()">run animation API</button>
+    <button type="button" name="button" onclick="reverseJquery()">reverse animation API</button>
+    <button type="button" name="button" onclick="runJqueryAnimate()">run jquery animate</button>
+    <button type="button" name="button" onclick="reset()">reset</button>
+    <div class="animate"></div>
+  </body>
+</html>

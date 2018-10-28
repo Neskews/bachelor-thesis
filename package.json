@@ -6,12 +6,16 @@
 	"scripts": {},
 	"author": "Lukas Höpfner",
 	"license": "ISC",
+	"scripts": {
+		"start": "nodemon ./server/index.js localhost 3000"
+	},
 	"dependencies": {
 		"express": "^4.16.3",
 		"express-formidable": "^1.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^5.7.0",
+		"nodemon": "^1.18.5",
 		"webpack": "^4.19.0",
 		"webpack-cli": "^3.1.0"
 	},

@@ -24,6 +24,7 @@
       ]
       const D = 500;
       const E = 'alternate';
+      const F = 'linear';
       const I = 6;
 
       const Q = {width: '100px'};
@@ -37,18 +38,8 @@
         });
       }
 
-      function runJqueryAnimate(i = I) {
-        if (i >= 0) {
-          i--;
-          $(S).animate(i % 2 === 0 ? R : Q, {
-            duration: D,
-            ease: 'linear'
-          });
-
-          setTimeout(function () {
-            runJqueryAnimate(i);
-          }, D * 2);
-        }
+      function runJqueryAnimate() {
+        $(S).animate(R, D, F);
       }
 
       function reset() {

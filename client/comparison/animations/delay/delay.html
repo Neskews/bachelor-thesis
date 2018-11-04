@@ -26,25 +26,18 @@
       const Q = {width: '100%'};
       const R = {width: '100px'};
 
-      const DU = 500;
-      const DE = 200;
+      const D = 500;
+      const E = 200;
 
       function runAnimationsApi() {
         document.querySelector(S).animate(P, {
-          duration: DU,
-          delay: DE,
+          duration: D,
+          delay: E,
         });
       }
 
       function runJqueryAnimate() {
-        $(S).delay(DE).animate(Q);
-      }
-
-      function reverseJquery() {
-        document.querySelector(S).animate(R, {
-          duration: DU,
-          fill: 'backwards'
-        });
+        $(S).delay(E).animate(Q);
       }
 
       function reset() {
@@ -52,7 +45,6 @@
       }
     </script>
     <button type="button" name="button" onclick="runAnimationsApi()">run animation API</button>
-    <button type="button" name="button" onclick="reverseJquery()">reverse animation API</button>
     <button type="button" name="button" onclick="runJqueryAnimate()">run jquery animate</button>
     <button type="button" name="button" onclick="reset()">reset</button>
     <div class="animate"></div>

@@ -28,7 +28,7 @@
         const Q = {width: '20%'};
         const R = {width: '100%'}
 
-        const I = Infinity;
+        const I = 0.8;
         const J = 0.2;
 
         function runJqueryAnimate() {
@@ -39,14 +39,12 @@
         function runAnimationsAPI() {
           document.querySelector(S).animate(P, {
             duration: D,
-            iterations: I,
             iterationStart: J,
+            iterations: I
           });
         }
 
     </script>
-
-
 
     <button type="button" onclick="runJqueryAnimate()">run jQuery</button>
     <button type="button" name="button" onclick="runAnimationsAPI()">run web animations API</button>

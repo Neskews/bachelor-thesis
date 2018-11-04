@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drop Down Menu</title>
+    <script src="../../../src/jquery.js" charset="utf-8"></script>
+    <style media="screen">
+      .menu {
+        background-color: rgb(184, 184, 250);
+        color: rgb(184, 184, 250);
+        border-radius: 5px;
+        display: inline-block;
+        position: absolute;
+        text-align: right;
+        left: -50px;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        padding: 10px 20px 10px 20px;
+      }
+
+      .menu.show {
+        color: black;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="menu opener"></div>
+    <script type="text/javascript">
+      const items = [
+        '<li>item 1</li>',
+        '<li>item 2</li>',
+        '<li>item 3</li>',
+        '<li>item 4</li>',
+        ];
+
+      items.forEach(item => {
+        $('.menu').append(item);
+      });
+
+      $('.menu').hover(
+        () => $('.menu').animate({left: '0'}, 150).promise().then(() => $('.menu').css('color', 'black')),
+        () => $('.menu').css('color', 'rgb(184, 184, 250)').animate({left: '-50px',}, 200),
+      )
+      
+    </script>
+  </body>
+</html>

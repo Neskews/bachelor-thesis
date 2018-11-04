@@ -32,7 +32,8 @@
       function setupEcma() {
         XMLHttpRequest.prototype.origOpen = XMLHttpRequest.prototype.open;
         XMLHttpRequest.prototype.open = () => {
-          this.origOpen.apply(this, arguments);
+          console.log(this);
+          this.open.apply(this, arguments);
           this.setRequestHeader(C, V);
         };
 

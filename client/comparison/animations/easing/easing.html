@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Easing</title>
+    <script src="../../../src/jquery.js" charset="utf-8"></script>
+    <style media="screen">
+      .animate {
+        width: 200px;
+        height: 50px;
+        background-color: blue;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const S = '.animate';
+      const I = { marginLeft: '5px' };
+      const Q = { marginLeft: '100px' };
+      const P = [I, Q];
+      const D = 500;
+      const C = 'cubic-bezier(.48,.21,.28,.76)';
+      const F = 'forwards';
+
+
+      function runAnimationsApi() {
+        document.querySelector(S).animate(P, {
+          easing: C,
+          duration: D,
+        });
+      }
+
+      function runJquery() {
+        $(S).animate(Q, C);
+      }
+    </script>
+
+    <button type="button" name="button" onclick="runAnimationsApi()">run animations API</button>
+    <button type="button" name="button" onclick="runJquery()">run jQuery</button>
+
+    <div class="animate">
+
+    </div>
+  </body>
+</html>

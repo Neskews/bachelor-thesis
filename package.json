@@ -3,12 +3,11 @@
 	"version": "1.0.0",
 	"description": "Bachelor thesis",
 	"main": "server/",
-	"scripts": {},
-	"author": "Lukas Höpfner",
-	"license": "ISC",
 	"scripts": {
 		"start": "nodemon ./server/index.js localhost 3000"
 	},
+	"author": "Lukas Höpfner",
+	"license": "ISC",
 	"dependencies": {
 		"express": "^4.16.3",
 		"express-formidable": "^1.0.0"

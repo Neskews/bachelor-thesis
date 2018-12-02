@@ -12,35 +12,67 @@ app.get('/', (request, response) => {
 	}, 1000);
 });
 
+app.get('/html', (request, response) => {
+	console.log(request.body);
+	
+	response.setHeader('Access-Control-Allow-Origin', '*');
+
+	setTimeout(() => {
+		response.send('<p>this is html</p>');
+	}, 1000);
+});
+
+app.get('/converter', (request, response) => {
+	response.setHeader('Access-Control-Allow-Origin', '*');
+	response.setHeader('Content-Type', 'application/customtype');
+
+	setTimeout(() => {
+		response.send('this worked!');
+	}, 1000);
+});
+
 app.post('/', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 	setTimeout(function () {
 		response.send('<p>received html</p>');
 	}, 1000);
-})
+});
+
+app.options('/auth', (request, response) => {
+	response.setHeader('Access-Control-Allow-Origin', '*');
+
+	console.log(request);
+
+	response.send('authorized');
+});
+
+app.get('/cors', (request, response) => {
+	response.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+	response.send('this origin was allowed!');
+});
 
 app.get('/getJson', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 	setTimeout(function () {
-		response.send({some: 'json'});
+		response.send({some: 'json', other: 'prop'});
 	}, 50);
 });
 
 app.get('/getScript', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
-	const script = `alert('This script is comes form the server');`
+	const script = 'alert(\'This script is comes form the server\');';
 
 	setTimeout(function () {
 		response.send(script);
 	}, 50);
-})
+});
 
 app.get('/global', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 	setTimeout(() => {
 		response.send();
 	}, 1000);
-})
+});
 
 app.post('/data', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,6 +81,17 @@ app.post('/data', (request, response) => {
 		response.send(request.fields);
 	}, 50);
 });
+
+app.get('/data', (request, response) => {
+	response.setHeader('Access-Control-Allow-Origin', '*');
+
+	console.log(request.fields);
+	
+
+	setTimeout(() => {
+		response.send(request.fields);
+	}, 50);
+})
 
 app.post('/custom', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', 'customheader');

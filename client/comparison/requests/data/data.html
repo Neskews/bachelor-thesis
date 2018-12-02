@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data</title>
+    <script src="../../../src/jquery.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const U = 'http://localhost:3000/data';
+      const M = 'POST';
+      const D = { foo: 'bar', baz: 2 };
+      const P = f => {
+        for (let k of Object.getOwnPropertyNames(D)) {
+          f.append(k, D[k]);
+        }
+      }
+
+
+      const E = (data, textStatus, jqXHR) => {
+
+        if (data.currentTarget) {
+          $('.responses').append(`
+            <h4>[XMLHttpRequest] responded with</h4>
+            ${data.currentTarget.response}
+          `);
+        } else {
+          $('.responses').append(`
+            <h4>[jQuery] responded with</h4>
+            ${JSON.stringify(data)}
+          `);
+        }
+      }
+
+
+    function runJquery() {
+      $.ajax(U, {
+        method: M,
+        data: D
+      })
+        .done(E);
+    }
+
+    function runECMAScript() {
+      const X = new XMLHttpRequest();
+      X.open(M, U);
+      X.onload = E;
+      const F = new FormData();
+      const G = P(F);
+      X.send(F);
+    }
+
+
+
+    </script>
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runECMAScript()">run XMLHttpRequest</button>
+    <button type="button" name="button" onclick="window.location.reload()">reset</button>
+
+    <div class="responses">
+
+    </div>
+  </body>
+</html>

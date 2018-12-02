@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../../src/jquery.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const U = 'http://localhost:3000/converter';
+
+      const C = {
+        customType: '/application/customtype; charset=utf-8/'
+      }
+
+      const D = {
+        'customtype json': response => {
+          console.log(response);
+          
+          return response;
+        }
+      }
+
+      function runJquery() {
+        $.ajax(U, {
+          beforeSend: jqXHR => jqXHR.setRequestHeader('Accept', '/application/customtype; charset=utf-8/'),
+          contents: C,
+          converters: D,
+          always: (data, status, jqXHR) => {
+            console.log(data);
+          }
+        })
+      }
+
+      function runECMAScript() {
+        
+      }
+
+    </script>
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runECMAScript()">run XMLHttpRequest</button>
+    <button type="button" name="button" onclick="window.location.reload()">reset</button>
+
+    <div class="responses">
+
+    </div>
+  </body>
+</html>

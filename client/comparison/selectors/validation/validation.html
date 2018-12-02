@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Validation</title>
+  <style>
+    div:nth-child(1) {
+      display: flex;
+      flex-direction: column;
+      width: 10%;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <input type="email" name="mail" id="" required>
+    <label for="mail">Required field</label>
+
+    <input type="email" name="username" id="" required>
+    <label for="mail">Optional Field</label>
+  </div>
+
+  <script>
+    document.querySelector(':required').style.borderColor = 'green';
+  </script>
+</body>
+</html>

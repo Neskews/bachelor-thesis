@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Datafilter</title>
+  <script src="../../../src/jquery.js"></script>
+</head>
+<body>
+  
+    <script>
+      const U = 'http://localhost:3000/getJson';
+      const M = 'GET';
+      
+      function runJquery() {
+        $.ajax(U, {
+          dataFilter: d => {
+            let D = JSON.parse(d);
+            delete D.other;
+            return JSON.stringify(D);
+          }
+        });
+      }
+
+      function runECMA() {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.onload = ({ currentTarget }) => {
+          const D = JSON.parse(currentTarget.response);
+          delete D.other;
+        }
+        X.send();
+      }
+          
+    </script>
+
+  <button onClick="runJquery()">run jQuery</button>
+  <button onClick="runECMA()">run XMLHttpRequest</button>
+
+  <div class="responses">
+
+  </div>
+</body>
+</html>

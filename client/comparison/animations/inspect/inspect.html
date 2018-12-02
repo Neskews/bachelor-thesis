@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Inspect</title>
+  <script src="../../../src/jquery.js" charset="utf-8"></script>
+  <style>
+    #animate {
+      width: 50px;
+      height: 50px;
+      background-color: blanchedalmond;
+    }
+
+    #other {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(48, 22, 141);
+    }
+  </style>
+</head>
+<body>
+  <div id="animate"></div>
+  <div id="other"></div>
+
+  <script>
+    const S = '#animate';
+    const E = document.querySelector(S);
+    const T = ':animated';
+    const U = '.results';
+    const X = { marginLeft: '200px' };
+    const Y = { marginLeft: '0' };
+    const D = 500;
+    
+    function animateInfinite(i = 0) {
+      $(S).animate(i % 2 === 0 ? X : Y, D, () =>  animateInfinite(i + 1));
+    }
+
+    function getAnimatedJquery() {
+      $(U).append(`<h4>[jQuery]</h4> found ${$(T).length} result`);
+    }
+
+    function getAnimatedEcma() {
+      console.log(document.timeline);
+      
+      if (E.getAnimations) {
+        E.getAnimations().some(animation => animation.playState === 'running');
+      } else {
+        $(U).append(`<h4>[ECMAScript]</h4> the Web Animations API method 'getAnimations' is not supported in your browser.`)
+      }
+    }
+
+    animateInfinite();
+  </script>
+
+  <button onclick="getAnimatedJquery()">get animations with jQuery</button>
+  <button onclick="getAnimatedEcma()">get animations with ecma</button>
+
+  <div class="results"></div>
+</body>
+</html>

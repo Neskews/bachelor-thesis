@@ -10,38 +10,88 @@
         color: rgb(184, 184, 250);
         border-radius: 5px;
         display: inline-block;
-        position: absolute;
+        position: relative;
         text-align: right;
         left: -50px;
-        border-top-right-radius: 100px;
-        border-bottom-right-radius: 100px;
+        border-top-right-radius: 50;
+        border-bottom-right-radius: 50;
         padding: 10px 20px 10px 20px;
       }
 
-      .menu.show {
-        color: black;
+      .menu a:visited, a:link {
+        color: rgb(184, 184, 250)
       }
-
     </style>
   </head>
   <body>
-    <div class="menu opener"></div>
+
+    <div class="jquery menu"></div>
+    <div class="ecma menu"></div>
+
     <script type="text/javascript">
+
       const items = [
-        '<li>item 1</li>',
-        '<li>item 2</li>',
-        '<li>item 3</li>',
-        '<li>item 4</li>',
-        ];
+        '<a href="../delay/delay.html">delay</a><br/>',
+        '<a href="../direction/direction.html">direction</a><br/>',
+        '<a href="../duration/duration.html">duration</a><br/>',
+        '<a href="../easing/easing.html">easing</a><br/>',
+        '<a href="../fill/fill.html">fill</a><br/>',
+        '<a href="../iterations/iterations.html">iterations</a><br/>',
+        '<a href="../iterationStart/iterationStart.html">iterationStart</a><br/>',
+      ];
 
-      items.forEach(item => {
-        $('.menu').append(item);
-      });
-
+      /* jQuery */
+      for (const item of items) {
+        $('.jquery.menu').append(item);
+      }
+      
+      
       $('.menu').hover(
-        () => $('.menu').animate({left: '0'}, 150).promise().then(() => $('.menu').css('color', 'black')),
-        () => $('.menu').css('color', 'rgb(184, 184, 250)').animate({left: '-50px',}, 200),
+        () => $('.jquery.menu')
+          .animate({left: '-10px'}, 150)
+          .promise()
+          .then(() => 
+            $('.jquery.menu a:link')
+            .css('color', 'black')),
+        () => $('.jquery.menu, .menu a:link').css('color', 'rgb(184, 184, 250)').animate({left: '-50px',}, 200),
       )
+      
+
+      /* ECMAScript */
+      for (const item of items) {
+        var menu = document.querySelector('.ecma.menu');
+        menu.insertAdjacentHTML('beforeend', item);
+      }
+
+      document.querySelector('.ecma.menu').addEventListener('mouseenter', () => {
+          document.querySelectorAll('.ecma.menu, .menu a:link').forEach(elem => 
+            elem.animate(
+              [
+                { left: '-50px', color:  'rgb(184, 184, 250)'},
+                { left: '-10px', color: 'black' }
+              ],
+              {
+                duration: 150,
+                fill: "forwards"
+              }
+            )
+          );
+      });
+      
+      document.querySelector('.ecma.menu').addEventListener('mouseleave', () => {
+          document.querySelectorAll('.ecma.menu, .menu a:link').forEach(elem => 
+              elem.animate(
+                [
+                  { left: '-10px', color: 'black' },
+                  { left: '-50px', color: 'rgb(184, 184, 250)' }
+                ],
+                {
+                  duration: 150,
+                  fill: "forwards"
+                }
+              )
+            );
+      });
       
     </script>
   </body>

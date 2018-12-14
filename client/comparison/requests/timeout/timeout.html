@@ -19,7 +19,7 @@
     <script>
       const U = 'http://localhost:3000';
       const M = 'GET';
-      const T = 600;
+      const T = 1;
       const F = (data, textStatus, jqXHR) => {
         if (!data.currentTarget) {
           $('.results').append(`
@@ -29,7 +29,7 @@
         } else {
           $('.results').append(`
             <h4>[XMLHttpRequest] </h4>
-            <p>resonded with ${data.type}</p>
+            <p>responded with ${data.type}</p>
           `);
         }
       }
@@ -37,8 +37,8 @@
         const X = new XMLHttpRequest;
         X.open(M, U);
         X.timeout = T;
-        X.ontimeout = F;
         X.send();
+        X.ontimeout = F;
       }
 
       function runJquery() {

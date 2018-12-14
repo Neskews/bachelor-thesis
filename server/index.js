@@ -6,15 +6,13 @@ const port = 3000;
 app.use(formidable());
 
 app.get('/', (request, response) => {
-	response.setHeader('Access-Control-Allow-Origin', '*');
-	setTimeout(function() {
+	response.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+	setTimeout(() => {
 		response.send('<p>my html</p>');
-	}, 1000);
+	}, 2);
 });
 
 app.get('/html', (request, response) => {
-	console.log(request.body);
-	
 	response.setHeader('Access-Control-Allow-Origin', '*');
 
 	setTimeout(() => {
@@ -33,16 +31,13 @@ app.get('/converter', (request, response) => {
 
 app.post('/', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
-	setTimeout(function () {
+	setTimeout(function() {
 		response.send('<p>received html</p>');
 	}, 1000);
 });
 
 app.options('/auth', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
-
-	console.log(request);
-
 	response.send('authorized');
 });
 
@@ -53,8 +48,8 @@ app.get('/cors', (request, response) => {
 
 app.get('/getJson', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
-	setTimeout(function () {
-		response.send({some: 'json', other: 'prop'});
+	setTimeout(function() {
+		response.send({ some: 'json', other: 'prop' });
 	}, 50);
 });
 
@@ -62,7 +57,7 @@ app.get('/getScript', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 	const script = 'alert(\'This script is comes form the server\');';
 
-	setTimeout(function () {
+	setTimeout(function() {
 		response.send(script);
 	}, 50);
 });
@@ -86,12 +81,11 @@ app.get('/data', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', '*');
 
 	console.log(request.fields);
-	
 
 	setTimeout(() => {
 		response.send(request.fields);
 	}, 50);
-})
+});
 
 app.post('/custom', (request, response) => {
 	response.setHeader('Access-Control-Allow-Origin', 'customheader');

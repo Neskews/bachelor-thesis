@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <meta charset="utf-8" />
+    <title>Load</title>
     <script src="../../../src/jquery.js"></script>
   </head>
   <body>
     <script type="text/javascript">
-
-      const U = 'http://localhost:3000/';
-      const D = {foo: 'bar'};
-      const S = '.responses';
+      const M = "GET";
+      const U = "http://localhost:3000/";
+      const D = { foo: "bar" };
+      const S = ".responses";
       const P = o => JSON.stringify(o);
 
-      function loadJq() {
+      function runJquery() {
         $(S).load(U);
       }
 
-      function loadEcmaPost() {
+      function runECMA() {
         const X = new XMLHttpRequest();
-        X.open('GET', U);
+        X.open(M, U);
         X.send();
-        const E = document.querySelector(S); // HTMLElement
+        const E = document.querySelector(S);
         X.onload = () => E.innerHTML = X.response;
       }
     </script>
-    
-    <button onclick="loadJq()">Load jQuery</button>
-    <button onclick="loadEcmaPost()">Load Ecma</button>
-    <button type="button" name="button" onclick="window.location.reload()">reset</button>
-    <div class="responses">
 
-    </div>
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runECMA()">run ECMAScript</button>
+    <div class="responses"></div>
   </body>
 </html>

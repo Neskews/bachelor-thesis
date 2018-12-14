@@ -1,49 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Context</title>
     <script src="../../../src/jquery.js"></script>
   </head>
   <body>
     <script type="text/javascript">
       const U = 'http://localhost:3000';
-      const S = '.responses';
+      const S = '.response';
       const M = 'GET';
       const N = '<p>it worked!</p>';
       const C = $(S);
+      const T = 'p'; // paragraph
 
-      const D = function() {
-        $(this).append('<h4>[jQuery]</h4>it worked!');
+      function runJquery() {
+        $.ajax(U, {
+          context: $(S)
+        }).done(function(D) {
+          $(this).append(D);
+        });
       }
 
-    function runJquery() {
-      $.ajax({
-        url: U,
-        context: $(S)
-      }).done(function() {
-        $(this).append(N);
-      });
-    }
-    
-    function runECMAScript() {
-      const X = new XMLHttpRequest();
-      X.open(M, U);
-      X.onload = function() {
-        $(S).append(N)
+      function runECMAScript() {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.onload = function({ currentTarget }) {
+          const D = document.createElement(T);
+          D.innerText = currentTarget.responseText;
+          document.querySelector(S).appendChild(D);
+        }
+        X.send();
       }
-      X.send();
-    }
-    
-
-
     </script>
     <button onclick="runJquery()">run jQuery</button>
     <button onclick="runECMAScript()">run XMLHttpRequest</button>
-    <button type="button" name="button" onclick="window.location.reload()">reset</button>
 
-    <div class="responses">
-
-    </div>
+    <div class="response"></div>
   </body>
 </html>

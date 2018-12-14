@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+    <meta charset="utf-8" />
+    <title>Shorthand method</title>
     <script src="../../../src/jquery.js"></script>
-    <style media="screen">
-      .ecma {
-        text-align: right;
-        margin-right: 50%;
-
-      }
-    </style>
   </head>
   <body>
     <script charset="utf-8">
-      /* ECMA */
-      const U = 'http://localhost:3000';
-      const D = {foo: 'bar'};
+      const U = "http://localhost:3000";
+      const D = { foo: "bar" };
       const S = (data, status, jqXHR) => {
         if (data.currentTarget) {
-          $('.responses').append(
-            `
-              <h4>[ECMA] the server responded with:</h4>
-              ${data.currentTarget.response}
-            `
-          )
+          
+            $(".responses").append(
+              `
+                <h4>[ECMA] the server responded with:</h4>
+                ${data.currentTarget.response}
+              `
+            );
         } else {
-          $('.responses').append(
+          $(".responses").append(
             `
-              <h4>[jQuery] the server responded with:</h4>
-              ${data}
-            `
-          )
+                    <h4>[jQuery] the server responded with:</h4>
+                    ${data}
+                  `
+          );
         }
-      }
+      };
 
-      const T = 'html';
-
-      // parser
+      const T = "json";
       const P = o => encodeURIComponent(JSON.stringify(o));
 
-      function getJq() {
-        $.get(U, D, S, T);
+      function runJqery() {
+        $.get(U, S, T);
       }
 
-      function getEcma() {
+      function runECMA() {
         const X = new XMLHttpRequest();
-        X.open('GET', `${U}?${P(D)}`);
+        X.open("GET", `${U}?${P(D)}`);
         X.responseType = T;
-        X.onload = S;
         X.send();
+
+        X.onload = S;
       }
     </script>
 
-    <button onclick="getJq()">get jquery</button>
-    <button onclick="getEcma()">get ecma</button>
+    <button onclick="runJqery()">run jQuery</button>
+    <button onclick="runECMA()">run ECMAScript</button>
 
     <div class="responses"></div>
-
   </body>
 </html>

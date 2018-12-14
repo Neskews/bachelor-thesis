@@ -16,6 +16,7 @@
     <script charset="utf-8">
       /* ECMA */
       const U = 'http://localhost:3000/getJson';
+      const M = 'GET';
       const D = {foo: 'bar'};
       const T = 'json';
       const S = (data, status, jqXHR) => {
@@ -23,14 +24,14 @@
           $('.responses').append(
             `
               <h4>[ECMA] the server responded with:</h4>
-              ${data.currentTarget.response}
+              ${JSON.stringify(data.currentTarget.response)}
             `
           )
         } else {
           $('.responses').append(
             `
               <h4>[jQuery] the server responded with:</h4>
-              ${data}
+              ${JSON.stringify(data)}
             `
           )
         }
@@ -40,19 +41,20 @@
 
       function getJsonEcma() {
         const X = new XMLHttpRequest();
-        X.open('GET', U);
+        X.open(M, U);
         X.responseType = T;
-        X.onload = S;
         X.send();
+
+        X.onload = S;
       }
 
       function getJsonJq() {
-        $.getJSON(U, D, S)
+        $.getJSON(U, D, S);
       }
     </script>
 
-    <button onclick="getJsonJq()">getJson jquery</button>
-    <button onclick="getJsonEcma()">getJson ecma</button>
+    <button onclick="getJsonJq()">runJquery</button>
+    <button onclick="getJsonEcma()">run ECMAScript</button>
 
     <div class="responses"></div>
 

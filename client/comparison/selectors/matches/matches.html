@@ -17,18 +17,19 @@
         const E = Sizzle(S);
         const R = Sizzle.matches(C, E);
 
-        $('.results').append(`
-          <h4>[Sizzle]</h4> found ${R.length} results
-        `);
+        // $('.results').append(`
+        //   <h4>[Sizzle]</h4> found ${R.length} results
+        // `);
       }
 
       function matchesSelectorsAPI() {
         const E = Array.from(document.querySelectorAll(S));
-        const R = E.filter(e => e.classList.contains(D));
+        // const R = E.filter(e => e.classList.contains(D));
+        E.filter(e => e.classList.contains(D));
 
-        $('.results').append(`
-          <h4>[Selectors API]</h4> found ${R.length} results
-        `);
+        // $('.results').append(`
+        //   <h4>[Selectors API]</h4> found ${R.length} results
+        // `);
       }
 
       function filterAlternative() {

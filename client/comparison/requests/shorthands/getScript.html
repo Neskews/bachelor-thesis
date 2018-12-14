@@ -2,38 +2,38 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Load Script</title>
     <script src="../../../src/jquery.js"></script>
   </head>
   <body>
     <script charset="utf-8">
-      /* ECMA */
-      const U = 'http://localhost:3000/getScript'; // url
+      const U = 'http://localhost:3000/getScript';
       const S = (data, status, jqXHR) => {
         if (data.currentTarget) {
-          const script = document.createElement('script'); // create script tag
-          script.src = URL.createObjectURL(data.currentTarget.response); // create url
-          document.querySelector('.responses').appendChild(script); // append to node
+          const script = document.createElement('script');
+          script.src = URL.createObjectURL(data.currentTarget.response);
+          document.querySelector('.responses').appendChild(script);
         }
       }
+      const R = 'blob';
+      const M = 'GET';
 
       function getScriptEcma() {
         const X = new XMLHttpRequest();
-        X.responseType = 'blob';
-        X.open('GET', U);
-        X.onload = S;
+        X.responseType = R;
+        X.open(M, U);
         X.send();
+        X.onload = S;
       }
 
       function getScriptJq() {
-        $.getScript(U)
+        $.getScript(U);
       }
     </script>
 
-    <button onclick="getScriptJq()">getScript jquery</button>
-    <button onclick="getScriptEcma()">getScript ecma</button>
+    <button onclick="getScriptJq()">run jQuery</button>
+    <button onclick="getScriptEcma()">run ECMAScript</button>
 
     <div class="responses"></div>
-
   </body>
 </html>

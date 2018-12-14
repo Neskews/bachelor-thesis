@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cache</title>
-  <script src="../../../src/jquery.js"></script>
-</head>
-<body>
-  
-  <script>
-    const U = 'http://localhost:3000';
-    const M = 'GET';
-    const B = true;
-    const Y = 'no-cache';
-    const Z = 'Cache-Control';
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cache</title>
+    <script src="../../../src/jquery.js"></script>
+  </head>
+  <body>
+    <script>
+      const U = "http://localhost:3000/cache";
+      const M = "GET";
+      const B = false;
+      const Y = "no-cache";
+      const Z = "Cache-Control";
 
-    const C = data => $('.responses').append(`
-      <h4>[jQuery]</h4>
-      <p>received a response with disabled cache</p>
-    `);
+      const C = ({ responseText }) => {
+        $(".responses").append(`
+            <h4>[jQuery]</h4>
+            <p>${responseText}</p>
+          `);
+      };
 
-    const D = data => $('.responses').append(`
-      <h4>[XMLHttpRequest]</h4>
-      <p>received a response with disabled cache</p>
-    `);
+      const D = ({ currentTarget }) =>
+        $(".responses").append(`
+            <h4>[ECMAScript]</h4>
+            <p>${currentTarget.response}</p>
+          `);
 
-    function runJquery() {
-      $.ajax(U, {
-        cache: B,
-        complete: C
-      });
-    }
+      function runJquery() {
+        $.ajax(U, {
+          cache: B,
+          complete: C
+        });
+      }
 
-    function runEcma() {
-      const X = new XMLHttpRequest();
-      X.open(M, U);
-      X.setRequestHeader(Y, Z);
-      X.onload = D;
-      X.send();
-    }
-
-  </script>
-  <button onclick="runJquery()">run jQuery</button>
-  <button onclick="runEcma()">run ECMAScript</button>
-  <div class="responses">
-    
-  </div>
-</body>
+      function runEcma() {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.setRequestHeader(Z, Y);
+        X.send();
+        X.onload = D;
+      }
+    </script>
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runEcma()">run ECMAScript</button>
+    <div class="responses"></div>
+  </body>
 </html>

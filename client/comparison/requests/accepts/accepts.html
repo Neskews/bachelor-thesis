@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Accepts</title>
+    <script src="../../../src/jquery.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const U = "https://api.twitch.tv/kraken/users?login=dakotaz";
+      const K = "Accept";
+      const C = "customtype";
+      const V = "application/vnd.twitchtv.v5+json";
+      const M = "GET";
+      const S = ".responses";
+      const Y = "text";
+      const Z = "customtype";
+      const P = o => JSON.stringify(o);
+
+      function runJquery() {
+        let o = {};
+        o[C] = V;
+        $.ajax(U, {
+          accepts: o,
+          converters: {
+            "text customtype": r => R
+          },
+          dataType: C,
+          complete: (response, status, bla) => {
+            $(S).append(`<h4>[jQuery] responded with</h4> ${response.status}`);
+          }
+        });
+      }
+
+      function runECMA() {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.setRequestHeader(K, V);
+        X.send();
+
+        X.onload = () =>
+          $(S).append(`<h4>[XMLHttpRequest] responded with</h4> ${X.status}`);
+      }
+    </script>
+
+    <h4>Expected status code: 400</h4>
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runECMA()">run XMLHttpRequest</button>
+
+    <div class="responses"></div>
+  </body>
+</html>

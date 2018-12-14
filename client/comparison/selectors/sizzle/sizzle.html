@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sizzle</title>
+  <script src="../../../src/sizzle.js"></script>
+</head>
+<body>
+  <div>
+    <div>First div</div>
+    <div>Second div</div>
+    <div>Third div</div>
+  </div>
+
+  <script>
+    const $ = window.Sizzle;
+    const S = 'div';
+    const T = S; // the selector that matches A's children
+    const A = $(S)[0]; // the HTMLDivElement
+
+    function runSizzle() {
+      $(T, A);
+    } 
+
+    function runECMA() {
+      A.querySelectorAll(T);
+    }
+  </script>
+
+  <button onclick="runSizzle()">run Sizzle</button>
+  <button onclick="runECMA()">run ECMA</button>
+</body>
+</html>

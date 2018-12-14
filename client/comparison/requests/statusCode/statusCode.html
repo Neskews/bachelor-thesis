@@ -20,29 +20,29 @@
         <h4>[jQuery]</h4> got status code 200
       `);
 
-      function useStatusCodeXmlHttpRequest(statusCode) {
+      function runECMAScript(statusCode) {
         const X = new XMLHttpRequest();
         X.open(M, U);
         X.onload = r => {
           switch (r.currentTarget.status) {
-            case 200: A();
+            case 200: B();
               break;
           }
         }
         X.send();
       }
 
-      function useStatusCodeJquery(statusCode) {
+      function runJquery(statusCode) {
         $.ajax(U, {
           statusCode: {
-            200: B
+            200: A
           }
         });
       }
     </script>
 
-    <button type="button" name="button" onclick="useStatusCodeXmlHttpRequest()">XmlHttpRequest process status code</button>
-    <button type="button" name="button" onclick="useStatusCodeJquery()">jQuery process status code</button>
+    <button type="button" name="button" onclick="runECMAScript()">run ECMAScript</button>
+    <button type="button" name="button" onclick="runJquery()">run jQuery</button>
 
     <div class="results">
 

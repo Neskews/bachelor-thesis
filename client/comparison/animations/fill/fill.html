@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
     <style media="screen">
       .animate {
@@ -10,40 +10,36 @@
         background-color: blue;
         margin-top: 5px;
       }
-
     </style>
     <script src="../../../src/jquery.js" charset="utf-8"></script>
   </head>
   <body>
-
     <script type="text/javascript">
-        const S = '.animate';
-        const P = {width: '100%'};
-        const Q = [
-          {width: '100px'},
-          {width: '100%'}
-        ];
-        const I = {width: '100px'};
-        const D = 500;
+      const S = ".animate";
+      const P = { width: "100%" };
+      const Q = [{ width: "100px" }, { width: "100%" }];
+      const I = { width: "100px" };
+      const D = 500;
 
-        function runJqueryAnimate() {
-          const A = $(S).animate(P).promise();
-          A.done(() => $(S).css(I));
-        }
+      function runJqueryAnimate() {
+const A = $(S)
+  .animate(P)
+  .promise();
+A.done(() => $(S).css(I));
+      }
 
-        function runAnimationsAPI() {
-          document.querySelector(S).animate(Q, {
-            duration: D,
-          });
-        }
+      function runAnimationsAPI() {
+document.querySelector(S).animate(Q, {
+  duration: D
+});
+      }
     </script>
 
-
-
     <button type="button" onclick="runJqueryAnimate()">run jQuery</button>
-    <button type="button" name="button" onclick="runAnimationsAPI()">run web animations API</button>
+    <button type="button" name="button" onclick="runAnimationsAPI()">
+      run web animations API
+    </button>
 
     <div class="animate"></div>
-
   </body>
 </html>

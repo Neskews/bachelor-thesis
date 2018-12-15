@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
     <style media="screen">
       .animate {
@@ -13,40 +13,44 @@
     <script src="../../../src/jquery.js" charset="utf-8"></script>
   </head>
   <body>
-
     <script type="text/javascript">
-        const S = '.animate';
-        const P = [
-          { marginLeft: '0' },
-          { marginLeft: '10px' },
-          { marginLeft: '0px' }
-        ];
+      const S = ".animate";
+      const P = [
+        { marginLeft: "0" },
+        { marginLeft: "10px" },
+        { marginLeft: "0px" }
+      ];
 
-        const Q = {marginLeft: '10px', marginBottom: '5px'};
-        const R = {marginLeft: '0', marginBottom: '0'};
+      const Q = { marginLeft: "10px", marginBottom: "5px" };
+      const R = { marginLeft: "0", marginBottom: "0" };
 
-        const D = 1000;
-        const I = Infinity;
+      const D = 1000;
+      const I = 1;
 
-        function runJqueryAnimate(i = 0) {
-          if (i < I) {
-            const A = $(S).animate(Q).animate(R);
-            A.promise().then(() => runJqueryAnimate(++i));
-          }
+      function runJqueryAnimate(i = 0) {
+        if (i < I) {
+          const A = $(S)
+            .animate(Q)
+            .animate(R);
+          A.promise().then(() => runJqueryAnimate(++i));
         }
+      }
 
-
-        function runAnimationsAPI() {
-          document.querySelector(S).animate(P, {
-            duration: D,
-            iterations: I,
-          });
-        }
+      function runAnimationsAPI() {
+        document.querySelector(S).animate(P, {
+          duration: D,
+          iterations: I
+        });
+      }
     </script>
 
     <button type="button" onclick="runJqueryAnimate()">run jQuery</button>
-    <button type="button" name="button" onclick="runAnimationsAPI()">run web animations API</button>
-    <button type="button" name="button" onclick="window.location.reload()">reset</button>
+    <button type="button" name="button" onclick="runAnimationsAPI()">
+      run web animations API
+    </button>
+    <button type="button" name="button" onclick="window.location.reload()">
+      reset
+    </button>
     <div class="animate">loading</div>
   </body>
 </html>

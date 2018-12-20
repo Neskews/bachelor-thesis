@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Get JSON</title>
+    <script src="../../jquery.js"></script>
+    <style media="screen">
+      .ecma {
+        text-align: right;
+        margin-right: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const U = "http://localhost:3000/getJson";
+      const M = "GET";
+      const D = { foo: "bar" };
+      const T = "json";
+      const S = (data, status, jqXHR) => {
+        if (data.currentTarget) {
+          $(".responses").append(
+            `
+              <h4>[ECMA] the server responded with:</h4>
+              ${JSON.stringify(data.currentTarget.response)}
+            `
+          );
+        } else {
+          $(".responses").append(
+            `
+              <h4>[jQuery] the server responded with:</h4>
+              ${JSON.stringify(data)}
+            `
+          );
+        }
+      };
+
+      const P = o => encodeURIComponent(JSON.stringify(o));
+
+      function runECMAScript() {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.responseType = T;
+        X.send();
+
+        X.onload = S;
+      }
+
+      function runJquery() {
+        $.getJSON(U, D, S);
+      }
+    </script>
+
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runECMAScript()">run ECMAScript</button>
+
+    <div class="responses"></div>
+  </body>
+</html>

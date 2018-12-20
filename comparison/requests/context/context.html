@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Context</title>
+    <script src="../../jquery.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const U = 'http://localhost:3000';
+      const S = '.response';
+      const M = 'GET';
+      const N = '<p>it worked!</p>';
+      const C = $(S);
+      const T = 'p'; // paragraph
+
+      function runJquery() {
+        $.ajax(U, {
+          context: $(S)
+        }).done(function(D) {
+          $(this).append(D);
+        });
+      }
+
+      function runECMAScript() {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.onload = function({ currentTarget }) {
+          const D = document.createElement(T);
+          D.innerText = currentTarget.responseText;
+          document.querySelector(S).appendChild(D);
+        }
+        X.send();
+      }
+    </script>
+    <button onclick="runJquery()">run jQuery</button>
+    <button onclick="runECMAScript()">run XMLHttpRequest</button>
+
+    <div class="response"></div>
+  </body>
+</html>

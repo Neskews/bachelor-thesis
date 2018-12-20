@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Matches and MatchesSelector</title>
+    <script src="../../sizzle.js" charset="utf-8"></script>
+    <script src="../../jquery.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      const C = ".findME";
+      const D = "findME";
+      const S = "h3";
+
+      function matchesSizzle() {
+        const E = Sizzle(S);
+        const R = Sizzle.matches(C, E);
+
+        $(".results").append(`
+          <h4>[Sizzle]</h4> found ${R.length} results
+        `);
+      }
+
+      function matchesSelectorsAPI() {
+        let E = Array.from(document.querySelectorAll(S));
+        E = E.filter(e => e.classList.contains(D));
+
+        $(".results").append(`
+          <h4>[Selectors API]</h4> found ${E.length} results
+        `);
+      }
+
+      function filterAlternative() {
+        const E = Array.from(document.querySelectorAll(S));
+        let R = [];
+        for (let i = 0; i < E.length; i++) {
+          if (E[i].classList.contains(D)) {
+            R.push(E[i]);
+          }
+        }
+
+        $(".results").append(`
+          <h4>[Filter Alternative]</h4> found ${R.length} results
+        `);
+      }
+    </script>
+
+    <h3>Heading 1</h3>
+    <h3 class="findME">Heading 2</h3>
+    <h3>Heading 3</h3>
+
+    <button type="button" name="button" onclick="matchesSizzle()">
+      Sizzle matches
+    </button>
+    <button type="button" name="button" onclick="matchesSelectorsAPI()">
+      Selectors API matches
+    </button>
+    <button type="button" name="button" onclick="filterAlternative()">
+      Filter Alternative
+    </button>
+
+    <div class="results"></div>
+  </body>
+</html>

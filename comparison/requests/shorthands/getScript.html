@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Load Script</title>
+    <script src="../../jquery.js"></script>
+  </head>
+  <body>
+    <script charset="utf-8">
+      const U = 'http://localhost:3000/getScript';
+      const S = (data, status, jqXHR) => {
+        if (data.currentTarget) {
+          const script = document.createElement('script');
+          script.src = URL.createObjectURL(data.currentTarget.response);
+          document.querySelector('.responses').appendChild(script);
+        }
+      }
+      const R = 'blob';
+      const M = 'GET';
+
+      function getScriptEcma() {
+        const X = new XMLHttpRequest();
+        X.responseType = R;
+        X.open(M, U);
+        X.send();
+        X.onload = S;
+      }
+
+      function getScriptJq() {
+        $.getScript(U);
+      }
+    </script>
+
+    <button onclick="getScriptJq()">run jQuery</button>
+    <button onclick="getScriptEcma()">run ECMAScript</button>
+
+    <div class="responses"></div>
+  </body>
+</html>

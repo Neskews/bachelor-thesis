@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .animate {
+        width: 100px;
+        height: 25px;
+        background-color: blue;
+        margin-top: 5px;
+        transition: 500ms;
+      }
+    </style>
+    <script src="../../jquery.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      const S = '.animate';
+      const P = [
+        {width: '100px'},
+        {width: '100%'}
+      ];
+
+      const Q = {width: '100%'};
+      const R = {width: '100px'};
+
+      const D = 500;
+      const E = 200;
+
+      function runAnimationsApi() {
+        document.querySelector(S).animate(P, {
+          duration: D,
+          delay: E,
+        });
+      }
+
+      function runJqueryAnimate() {
+        $(S).delay(E).animate(Q);
+      }
+
+      function reset() {
+        window.location.reload();
+      }
+    </script>
+    <button type="button" name="button" onclick="runAnimationsApi()">run animation API</button>
+    <button type="button" name="button" onclick="runJqueryAnimate()">run jquery animate</button>
+    <button type="button" name="button" onclick="reset()">reset</button>
+    <div class="animate"></div>
+  </body>
+</html>

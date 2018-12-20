@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../sizzle.js" charset="utf-8"></script>
+    <script src="../../jquery.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+      const U = 'http://localhost:3000';
+      const M = 'GET';
+
+      const A = () => $('.results').append(`
+        <h4>[XmlHttpRequest]</h4> got status code 200
+      `);
+
+      const B = () => $('.results').append(`
+        <h4>[jQuery]</h4> got status code 200
+      `);
+
+      function runECMAScript(statusCode) {
+        const X = new XMLHttpRequest();
+        X.open(M, U);
+        X.onload = r => {
+          switch (r.currentTarget.status) {
+            case 200: B();
+              break;
+          }
+        }
+        X.send();
+      }
+
+      function runJquery(statusCode) {
+        $.ajax(U, {
+          statusCode: {
+            200: A
+          }
+        });
+      }
+    </script>
+
+    <button type="button" name="button" onclick="runECMAScript()">run ECMAScript</button>
+    <button type="button" name="button" onclick="runJquery()">run jQuery</button>
+
+    <div class="results">
+
+    </div>
+  </body>
+</html>

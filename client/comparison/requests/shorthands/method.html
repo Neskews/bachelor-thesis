@@ -7,23 +7,23 @@
   </head>
   <body>
     <script charset="utf-8">
-      const U = "http://localhost:3000";
+      const U = "http://localhost:3000/";
       const D = { foo: "bar" };
+      const M = 'GET';
       const S = (data, status, jqXHR) => {
         if (data.currentTarget) {
-          
             $(".responses").append(
               `
-                <h4>[ECMA] the server responded with:</h4>
-                ${data.currentTarget.response}
+                <h4>[ECMA] the server responded with status code:</h4>
+                ${data.currentTarget.status}
               `
             );
         } else {
           $(".responses").append(
             `
-                    <h4>[jQuery] the server responded with:</h4>
-                    ${data}
-                  `
+              <h4>[jQuery] the server responded with:</h4>
+              ${data}
+            `
           );
         }
       };
@@ -32,16 +32,19 @@
       const P = o => encodeURIComponent(JSON.stringify(o));
 
       function runJqery() {
-        $.get(U, S, T);
+        $.get(U, D, S);
       }
 
       function runECMA() {
         const X = new XMLHttpRequest();
-        X.open("GET", `${U}?${P(D)}`);
+        X.open(M, `${U}?${P(D)}`);
         X.responseType = T;
+        X.onload = S;
         X.send();
 
-        X.onload = S;
+        X.onreadystatechange = (ev) => console.log(ev);
+        
+
       }
     </script>
 

@@ -9,7 +9,6 @@
     <script type="text/javascript">
       const M = "GET";
       const U = "http://localhost:3000/";
-      const D = { foo: "bar" };
       const S = ".responses";
       const P = o => JSON.stringify(o);
 
@@ -21,8 +20,14 @@
         const X = new XMLHttpRequest();
         X.open(M, U);
         X.send();
-        const E = document.querySelector(S);
-        X.onload = () => E.innerHTML = X.response;
+
+        X.onload = ({ target }) => {
+          const E = document.querySelector(S);
+          $(E).append(`
+            <h4>[ECMAScript] responded with</h4>
+            <p>${target.responseText}</p>
+          `);
+        };
       }
     </script>
 

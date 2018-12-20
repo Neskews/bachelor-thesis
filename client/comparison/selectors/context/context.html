@@ -17,15 +17,17 @@
     function runJquery() {
       const A = document.querySelector(S);
       const N = M(T, A);
-      // $(S).append(`
-      //   <h4>[Sizzle]</h4>
-      //   <p>found ${N.length} elements</p>
-      // `);
+
+      $(S).append(`
+        <h4>[Sizzle]</h4>
+        <p>found ${N.length} elements</p>
+      `);
     }
 
     function runEcma() {
       const A = document.querySelector(S);
       const N = A.querySelectorAll(T);
+
       $(S).append(`
         <h4>[ECMAScript]</h4>
         <p>found ${N.length} elements</p>
